@@ -1,0 +1,96 @@
+[schemes.night-owl.primary]
+background = "#011627"
+foreground = "#d6deeb"
+
+[schemes.night-owl.cursor]
+text = "CellBackground"
+cursor = "CellForeground"
+
+[schemes.night-owl.vi_mode_cursor]
+text = "CellBackground"
+cursor = "#22da6e"
+
+[schemes.night-owl.selection]
+text = "#ffffff"
+background = "#0d486e"
+
+[schemes.night-owl.search.matches]
+foreground = "#000000"
+background = "#22da6e"
+
+[schemes.night-owl.search.matches.focused_match]
+foreground = "#ffffff"
+background = "#22da6e"
+
+[schemes.night-owl.search.bar]
+foreground = "#ffffff"
+background = "#1d3b53"
+
+[schemes.night-owl.normal]
+black = "#011627"
+red = "#EF5350"
+green = "#22da6e"
+yellow = "#c5e478"
+blue = "#82AAFF"
+magenta = "#C792EA"
+cyan = "#21c7a8"
+white = "#ffffff"
+
+[schemes.night-owl.bright]
+black = "#575656"
+red = "#EF5350"
+green = "#22da6e"
+yellow = "#ffeb95"
+blue = "#82AAFF"
+magenta = "#C792EA"
+cyan = "#7fdbca"
+white = "#ffffff"
+
+[schemes.night-owl-light.primary]
+background = "#F6F6F6"
+foreground = "#403f53"
+
+[schemes.night-owl-light.cursor]
+text = "CellBackground"
+cursor = "#90A7B2"
+
+[schemes.night-owl-light.vi_mode_cursor]
+text = "CellBackground"
+cursor = "#08916a"
+
+[schemes.night-owl-light.selection]
+text = "#000000"
+background = "#E0E0E0"
+
+[schemes.night-owl-light.search.matches]
+foreground = "#F6F6F6"
+background = "#08916a"
+
+[schemes.night-owl-light.search.matches.focused_match]
+foreground = "#000000"
+background = "#08916a"
+
+[schemes.night-owl-light.search.bar]
+foreground = "#403f53"
+background = "#E0E0E0"
+
+[schemes.night-owl-light.normal]
+black = "#403f53"
+red = "#de3d3b"
+green = "#08916a"
+yellow = "#daaa01"
+blue = "#288ed7"
+magenta = "#d6438a"
+cyan = "#2AA298"
+white = "#F0F0F0"
+
+[schemes.night-owl-light.bright]
+black = "#403f53"
+red = "#de3d3b"
+green = "#08916a"
+yellow = "#daaa01"
+blue = "#288ed7"
+magenta = "#d6438a"
+cyan = "#2AA298"
+white = "#F0F0F0"
+
