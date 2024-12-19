@@ -34,16 +34,14 @@
 	        pkgs.tmux
 	        pkgs.starship
 	        pkgs.stow
-	        pkgs.aerospace
+	        # pkgs.aerospace
 	        pkgs.gh
-	        pkgs.alacritty
 	        pkgs.tree
           pkgs.nodejs_22
           pkgs.fira-code	
           pkgs.jq	
           pkgs.pure-prompt
           pkgs.fzf
-          pkgs.discord
         ];
 
       # Symlink Nix Apps to /Applications to make Spotlight index them
@@ -80,7 +78,8 @@
 	      dock.mru-spaces = false;
 	      dock.persistent-apps = [
 	        "/Applications/Safari.app"
-          "/Applications/Nix Apps/Alacritty.app"
+          "/Applications/Alacritty.app"
+          "/Applications/Discord.app"
 	      ];
 	      dock.persistent-others = [
 	        "/Users/grady/Desktop/"
@@ -92,7 +91,10 @@
        # Homebrew needs to be installed on its own!
       homebrew.enable = true;
       homebrew.casks = [
-	     #  "wireshark"
+        "discord"
+        "alacritty"
+        "nikitabobko/tap/aerospace"
+        "google-chrome"
       ];
       # homebrew.brews = [
 	     #  "imagemagick"
