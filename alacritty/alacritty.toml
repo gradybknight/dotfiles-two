@@ -17,7 +17,7 @@ decorations = "Buttonless"
 size = 18.0
 # Normal font face
 [font.normal]
-family = "Fira Code Nerd Font"
+family = "Fira Code"
 # Font size
 
 # Colors

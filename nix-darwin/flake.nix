@@ -27,26 +27,23 @@
     configuration = { pkgs, ... }: {
       # List packages installed in system profile. To search by name, run:
       # $ nix-env -qaP | grep wget
-      environment.etc."fonts/FiraCode".source = "${pkgs.fira-code}/share/fonts";
       environment.systemPackages =
         [
-	  pkgs.neovim
-	  pkgs.wezterm
-	  pkgs.ripgrep
-	  pkgs.tmux
-	  pkgs.starship
-	  pkgs.stow
-	  pkgs.aerospace
-	  pkgs.gh
-	  pkgs.alacritty
-	  pkgs.tree
-    pkgs.nodejs_22
-    pkgs.fira-code	
-    pkgs.jq	
-    pkgs.pure-prompt
-    pkgs.fzf
-    pkgs.fontconfig
-    # pkgs.sketchybar
+	        pkgs.neovim
+	        pkgs.wezterm
+	        pkgs.ripgrep
+	        pkgs.tmux
+	        pkgs.starship
+	        pkgs.stow
+	        pkgs.aerospace
+	        pkgs.gh
+	        pkgs.alacritty
+	        pkgs.tree
+          pkgs.nodejs_22
+          pkgs.fira-code	
+          pkgs.jq	
+          pkgs.pure-prompt
+          pkgs.fzf
         ];
 
       # Symlink Nix Apps to /Applications to make Spotlight index them
