@@ -30,3 +30,5 @@ alias lastmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
 alias gp='git pull'
 alias gs='git status'
 alias gcmp='git checkout main && git pull'
+# Delete merged local git branches
+alias grm='git branch --merged | grep -v "\*" | grep -v main | xargs -n 1 git branch -d'
