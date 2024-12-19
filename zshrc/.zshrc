@@ -16,7 +16,7 @@ prompt pure
 
 alias v=nvim
 alias c="clear"
-alias ls='ls --color=auto'
+alias ls='ls --color=auto -a1'
 alias la='ls -lathr'
 alias e='exit'
 

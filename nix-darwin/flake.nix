@@ -45,6 +45,7 @@
     pkgs.jq	
     pkgs.pure-prompt
     pkgs.fzf
+    pkgs.fontconfig
     # pkgs.sketchybar
         ];
 
