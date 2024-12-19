@@ -20,6 +20,7 @@ alias ls='ls --color=auto -a1'
 alias la='ls -lathr'
 alias e='exit'
 alias dot='cd ~/git/dotfiles/'
+alias update='~/git/dotfiles/apply-dotfiles.sh'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias lastmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
