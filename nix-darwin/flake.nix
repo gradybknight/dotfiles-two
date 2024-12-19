@@ -30,7 +30,6 @@
       environment.systemPackages =
         [
 	        pkgs.neovim
-	        pkgs.wezterm
 	        pkgs.ripgrep
 	        pkgs.tmux
 	        pkgs.starship
@@ -44,6 +43,7 @@
           pkgs.jq	
           pkgs.pure-prompt
           pkgs.fzf
+          pkgs.discord
         ];
 
       # Symlink Nix Apps to /Applications to make Spotlight index them
@@ -80,9 +80,11 @@
 	      dock.mru-spaces = false;
 	      dock.persistent-apps = [
 	        "/Applications/Safari.app"
+          "/Applications/Nix Apps/Alacritty.app"
 	      ];
 	      dock.persistent-others = [
-	        "/Users/gradydev/Desktop"
+	        "/Users/grady/Desktop/"
+	        "/Users/grady/Downloads/"
 	      ];
         dock.show-recents = false;
       };
@@ -101,7 +103,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MacBook-Air-2
-    darwinConfigurations."Grady’s MacBook Air" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."Gradys-MacBook-Air" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
       ];

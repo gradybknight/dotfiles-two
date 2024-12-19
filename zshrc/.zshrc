@@ -21,6 +21,7 @@ alias la='ls -lathr'
 alias e='exit'
 alias dot='cd ~/git/dotfiles/'
 alias update='~/git/dotfiles/apply-dotfiles.sh'
+alias rebuild='darwin-rebuild switch --flake ~/git/dotfiles/nix-darwin'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias lastmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
