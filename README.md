@@ -2,7 +2,7 @@
 
 Follow these steps to set up your system and apply your dotfiles.
 
-### 1. Clone Your Dotfiles Repo
+### 1. Clone Dotfiles Repo
 
 ```bash
 git clone https://github.com/gradybknight/dotfiles-two.git ~/git/dotfiles
@@ -28,13 +28,13 @@ chmod +x ~/git/dotfiles/apply-dotfiles.sh
 ~/git/dotfiles/apply-dotfiles.sh
 ```
 
-### 5. Update Dotfiles in the Future
-
-If you make changes to your dotfiles repository, you can pull the latest changes and re-apply the symlinks:
-
-## setup tmux - **This is not automated**
+### 5. setup tmux - **This is not automated**
 
 - Clone TPM into your ~/.tmux/plugins directory:
   `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 - `tmux`
 - `ctrl-A then I`
+
+### 6. Add `aerospace` to startup items
+
+- use the Mac OS UI
