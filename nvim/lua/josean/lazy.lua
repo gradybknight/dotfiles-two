@@ -14,7 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({ { import = "josean.plugins" }, { import = "josean.plugins.lsp" } }, {
   install = {
     -- colorscheme = { "nightfly" },
-    colorscheme = { "night-owl" },
+    -- colorscheme = { "night-owl" },
+    colorscheme = { "catppuccin" },
   },
   checker = {
     enabled = true,

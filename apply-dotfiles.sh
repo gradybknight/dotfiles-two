@@ -17,7 +17,7 @@ if [ ! -d "$CONFIG_DIR" ]; then
 fi
 
 # List of directories to stow
-DIRS=("aerospace" "alacritty" "nvim" "tux")
+DIRS=("aerospace" "alacritty" "nvim" "tmux")
 # "zshrc"
 
 # Use GNU stow to symlink each directory
