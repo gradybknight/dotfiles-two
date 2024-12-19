@@ -101,7 +101,7 @@
   {
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#MacBook-Air-2
-    darwinConfigurations."MacBook-Air-2" = nix-darwin.lib.darwinSystem {
+    darwinConfigurations."Grady’s MacBook Air" = nix-darwin.lib.darwinSystem {
       modules = [
         configuration
       ];
