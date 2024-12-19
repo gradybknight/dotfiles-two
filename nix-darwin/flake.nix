@@ -95,6 +95,7 @@
         "alacritty"
         "nikitabobko/tap/aerospace"
         "google-chrome"
+        "anylist"
       ];
       # homebrew.brews = [
 	     #  "imagemagick"
