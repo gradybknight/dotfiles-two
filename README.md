@@ -15,9 +15,15 @@ https://nixos.org/download.html
 
 ### 3. Run `nix-darwin` to Apply the Flake
 
+- See the `sed` command in the [nix-darwin repo](https://github.com/LnL7/nix-darwin?tab=readme-ov-file#step-1-creating-flakenix). Make sure the computer's name near the bottom of the flake.nix is correct
+
+- Run the build command
+
 ```bash
 nix run nix-darwin -- switch --flake ~/git/dotfiles/nix-darwin
 ```
+
+- After applying dotfiles below there is an alias to `rebuild` which will rebuild the flake from the dotfile. **TODO** figure out how to manage multiple computer names
 
 ### 4. Apply Your Dotfiles
 
