@@ -100,6 +100,7 @@
         "font-fira-code-nerd-font"
         "font-fira-code"
         "visual-studio-code"
+        "whatsapp"
       ];
       # homebrew.brews = [
 	     #  "imagemagick"
