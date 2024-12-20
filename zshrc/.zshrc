@@ -39,3 +39,7 @@ alias gcobd='function _gcobd() { git checkout -b "$1"; }; _gcobd'
 
 # Add all changes and commit with a message
 alias gc='function _gc() { git add -A && git commit -m "$1"; }; _gc'
+
+# push using current branch name
+alias gpuo='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
+
