@@ -38,7 +38,6 @@
 	        pkgs.gh
 	        pkgs.tree
           pkgs.nodejs_22
-          pkgs.fira-code	
           pkgs.jq	
           pkgs.pure-prompt
           pkgs.fzf
@@ -98,6 +97,8 @@
         "nikitabobko/tap/aerospace"
         "google-chrome"
         "anylist"
+        "font-fira-code-nerd-font"
+        "font-fira-code"
       ];
       # homebrew.brews = [
 	     #  "imagemagick"

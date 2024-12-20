@@ -16,20 +16,20 @@ decorations = "Buttonless"
 [font]
 size = 18.0
 # Normal font face
-# [font.normal]
-# family = "FiraCode"
-#
-# # Bold font face (optional)
-# [font.bold]
-# family = "FiraCode"
-#
-# # Italic font face (optional)
-# [font.italic]
-# family = "FiraCode"
-#
-# # Bold italic font face (optional)
-# [font.bold_italic]
-# family = "FiraCode"
+[font.normal]
+family = "Fira Code"
+
+# Bold font face (optional)
+[font.bold]
+family = "Fira Code"
+
+# Italic font face (optional)
+[font.italic]
+family = "Fira Code"
+
+# Bold italic font face (optional)
+[font.bold_italic]
+family = "Fira Code"
 
 # Scrolling behavior
 [scrolling]
