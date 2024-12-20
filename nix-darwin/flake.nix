@@ -66,6 +66,10 @@
       nixpkgs.hostPlatform = "aarch64-darwin";
 
       security.pam.enableSudoTouchIdAuth = true;
+      
+      system.keyboard.enableKeyMapping = true;
+      system.keyboard.remapCapsLockToEscape = true;
+
 
       system.defaults = {
         finder.AppleShowAllExtensions = true;
@@ -89,6 +93,7 @@
 	      ];
         dock.show-recents = false;
       };
+
 
        # Homebrew needs to be installed on its own!
       homebrew.enable = true;
