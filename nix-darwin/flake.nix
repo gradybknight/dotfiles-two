@@ -43,6 +43,7 @@
           pkgs.fzf
           pkgs.devpod
           pkgs.docker
+          pkgs.colima
         ];
 
       # Symlink Nix Apps to /Applications to make Spotlight index them
