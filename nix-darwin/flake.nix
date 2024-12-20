@@ -99,6 +99,7 @@
         "anylist"
         "font-fira-code-nerd-font"
         "font-fira-code"
+        "visual-studio-code"
       ];
       # homebrew.brews = [
 	     #  "imagemagick"
