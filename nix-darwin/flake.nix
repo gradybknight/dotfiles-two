@@ -42,6 +42,8 @@
           pkgs.jq	
           pkgs.pure-prompt
           pkgs.fzf
+          pkgs.devpod
+          pkgs.docker
         ];
 
       # Symlink Nix Apps to /Applications to make Spotlight index them
