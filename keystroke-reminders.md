@@ -6,8 +6,8 @@
 | Choose session            | Ctrl-A + S  |
 | List windows              | Ctrl-A + w  |
 | new window                | Ctrl-A + c  |
-| Rename window             | Ctrl-A + r  |
-| Kill session                 | Ctrl-A + k  |
+| Rename window             | Ctrl-A + m  |
+| Kill session              | Ctrl-A + k  |
 | Kill pane                 | Ctrl-A + x  |
 | Split pane horizontally   | Ctrl-A + v  |
 | Split pane vertically     | Ctrl-A + s  |
