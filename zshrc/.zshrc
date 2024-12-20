@@ -18,7 +18,7 @@ alias v=nvim
 alias c="clear"
 alias ls='ls --color=auto -a1'
 alias la='ls -lathr'
-alias e='exit'
+alias x='exit'
 alias dot='cd ~/git/dotfiles/'
 alias update='~/git/dotfiles/apply-dotfiles.sh'
 alias rebuild='darwin-rebuild switch --flake ~/git/dotfiles/nix-darwin'
