@@ -34,7 +34,6 @@
 	        pkgs.tmux
 	        pkgs.starship
 	        pkgs.stow
-	        # pkgs.aerospace
 	        pkgs.gh
 	        pkgs.tree
           pkgs.nodejs_22
