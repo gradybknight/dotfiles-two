@@ -10,7 +10,7 @@ mkdir -p "$XDG_CONFIG_HOME"/.tmux/plugins
 
 # Create symbolic links
 ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/nvim
-ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME"/tmux
+ln -sf "$PWD/tmux" "$XDG_CONFIG_HOME"/tmux
 # ln -sf "$PWD/tmux/tmux.conf" "$XDG_CONFIG_HOME"/.tmux.conf
 # ln -sf "$PWD/tmux/tmux.reset.conf" "$XDG_CONFIG_HOME"/tmux/tmux.reset.conf
 ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME"/nixpkgs/config.nix
