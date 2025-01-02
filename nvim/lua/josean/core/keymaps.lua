@@ -31,4 +31,6 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
-keymap.set("n", "<leader>rm", ":RenderMarkdown toggle<CR>", { desc = "Toggle Render Markdown" }) --  move current buffer to new tab
+keymap.set("n", "<leader>rm", ":RenderMarkdown toggle<CR>", { desc = "Toggle Render Markdown" }) --  toggle render Markdown
+
+keymap.set("n", "<leader>np", ":NoNeckPain<CR>", { desc = "Toggle No Neck Pain" }) --  toggle no neck pain
