@@ -84,11 +84,11 @@
 	      dock.persistent-apps = [
 	        "/Applications/Safari.app"
           "/Applications/Alacritty.app"
-          "/Applications/Discord.app"
+          "/Applications/Slack.app"
 	      ];
 	      dock.persistent-others = [
-	        "/Users/grady/Desktop/"
-	        "/Users/grady/Downloads/"
+	        "/Users/grknight/Desktop/"
+	        "/Users/grknight/Downloads/"
 	      ];
         dock.show-recents = false;
       };
@@ -100,12 +100,13 @@
         "discord"
         "alacritty"
         "nikitabobko/tap/aerospace"
-        "google-chrome"
         "anylist"
         "font-fira-code-nerd-font"
         "font-fira-code"
         "visual-studio-code"
-        "whatsapp"
+        # These are disabled for work computer:
+        # "google-chrome"
+        # "whatsapp"
       ];
       # homebrew.brews = [
 	     #  "imagemagick"
@@ -114,9 +115,11 @@
     };
   in
   {
-    # Build darwin flake using:
-    # $ darwin-rebuild build --flake .#MacBook-Air-2
-    darwinConfigurations."Gradys-MacBook-Air" = nix-darwin.lib.darwinSystem {
+    # darwinConfigurations."Gradys-MacBook-Air" = nix-darwin.lib.darwinSystem {
+    # ^^Personal macbook
+
+    darwinConfigurations."grknight-mac" = nix-darwin.lib.darwinSystem {
+    # ^^Redhat macbook
       modules = [
         configuration
       ];
