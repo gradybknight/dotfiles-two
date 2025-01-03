@@ -43,3 +43,5 @@ alias gc='function _gc() { git add -A && git commit -m "$1"; }; _gc'
 # push using current branch name
 alias gpuo='git push -u origin $(git rev-parse --abbrev-ref HEAD)'
 
+# secure-curl alias. Will only work on my RH machine
+alias secure-curl='curl --cert /Users/grknight/git/legal_apps/cert_stuff/grknight.pem --key /Users/grknight/git/legal_apps/cert_stuff/grknight.key'
