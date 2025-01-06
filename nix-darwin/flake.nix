@@ -108,9 +108,9 @@
         # "google-chrome"
         # "whatsapp"
       ];
-      # homebrew.brews = [
-	     #  "imagemagick"
-      # ];
+      homebrew.brews = [
+        "git-lfs"
+      ];
 
     };
   in
