@@ -19,6 +19,7 @@ alias c="clear"
 alias ls='ls --color=auto -a1'
 alias la='ls -lathr'
 alias x='exit'
+alias ..='cd ..'
 alias dot='cd ~/git/dotfiles/'
 alias update='~/git/dotfiles/apply-dotfiles.sh'
 alias rebuild='darwin-rebuild switch --flake ~/git/dotfiles/nix-darwin'
@@ -48,3 +49,4 @@ alias secure-curl='curl --cert /Users/grknight/git/legal_apps/cert_stuff/grknigh
 
 # tree two levels
 alias ttwo='tree -L 2 -a'
+
