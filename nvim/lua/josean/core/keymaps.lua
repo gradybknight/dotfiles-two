@@ -33,4 +33,6 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 keymap.set("n", "<leader>rm", ":RenderMarkdown toggle<CR>", { desc = "Toggle Render Markdown" }) --  toggle render Markdown
 
-keymap.set("n", "<leader>np", ":NoNeckPain<CR>", { desc = "Toggle No Neck Pain" }) --  toggle no neck pain
+keymap.set("n", "<leader>np", ":NoNeckPain<CR>", { desc = "Toggle No Neck Pain" }) -- toggle no neck pain
+
+keymap.set("n", "<leader>ng", ":Neogit<CR>", { desc = "Neogit" }) -- Invoke Neogit
