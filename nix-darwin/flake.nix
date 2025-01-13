@@ -110,6 +110,7 @@
       ];
       homebrew.brews = [
         "git-lfs"
+        "akamai"
       ];
 
     };
