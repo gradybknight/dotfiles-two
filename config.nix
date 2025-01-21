@@ -10,7 +10,7 @@
         pure-prompt
         fzf
         jq
-        nodejs_22
+        # nodejs_22
       ];
     };
   };
