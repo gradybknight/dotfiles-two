@@ -107,6 +107,7 @@
         # These are disabled for work computer:
         # "google-chrome"
         # "whatsapp"
+        "freecad"
       ];
       homebrew.brews = [
         "git-lfs"
