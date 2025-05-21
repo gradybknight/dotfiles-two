@@ -23,6 +23,7 @@ alias ..='cd ..'
 alias dot='cd ~/git/dotfiles/'
 alias update='~/git/dotfiles/apply-dotfiles.sh'
 alias rebuild='darwin-rebuild switch --flake ~/git/dotfiles/nix-darwin'
+alias dpb='devpod up . --provider docker --dotfiles https://github.com/gradybknight/dotfiles-two.git --ide none'
 
 # finds all files recursively and sorts by last modification, ignore hidden files
 alias lastmod='find . -type f -not -path "*/\.*" -exec ls -lrt {} +'
@@ -50,3 +51,6 @@ alias secure-curl='curl --cert /Users/grknight/git/legal_apps/cert_stuff/grknigh
 # tree two levels
 alias ttwo='tree -L 2 -a'
 
+
+# Created by `pipx` on 2025-05-05 15:00:28
+export PATH="$PATH:/Users/grknight/.local/bin"

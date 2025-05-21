@@ -43,6 +43,8 @@
           pkgs.devpod
           pkgs.docker
           pkgs.colima
+          pkgs.pipx
+          pkgs.virtualenv
         ];
 
       # Symlink Nix Apps to /Applications to make Spotlight index them
@@ -108,6 +110,7 @@
         # "google-chrome"
         # "whatsapp"
         "freecad"
+        "orcaslicer"
       ];
       homebrew.brews = [
         "git-lfs"
