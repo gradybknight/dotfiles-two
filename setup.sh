@@ -23,6 +23,7 @@ else
     echo "TPM already installed at $HOME/.tmux/plugins/tpm"
 fi
 
+echo "installing nix packages!!!!!!!!!!"
 # Install Nix packages
 nix-env -iA nixpkgs.myPackages
 
