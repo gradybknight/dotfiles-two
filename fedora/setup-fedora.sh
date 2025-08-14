@@ -44,7 +44,30 @@ sudo dnf install -y \
     curl \
     wget \
     zsh \
-    util-linux-user
+    util-linux-user \
+    fontconfig
+
+# Install Nerd Fonts for proper icon display with catppuccin theme
+echo "Installing Nerd Fonts..."
+NERD_FONTS_DIR="$HOME/.local/share/fonts"
+mkdir -p "$NERD_FONTS_DIR"
+
+# Download and install JetBrainsMono Nerd Font (popular choice for development)
+if [ ! -f "$NERD_FONTS_DIR/JetBrainsMonoNerdFont-Regular.ttf" ]; then
+    echo "Downloading JetBrainsMono Nerd Font..."
+    FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip"
+    TEMP_DIR=$(mktemp -d)
+    cd "$TEMP_DIR"
+    curl -L -o JetBrainsMono.zip "$FONT_URL"
+    unzip -q JetBrainsMono.zip
+    cp *.ttf "$NERD_FONTS_DIR/"
+    cd - > /dev/null
+    rm -rf "$TEMP_DIR"
+    fc-cache -fv
+    echo "✓ JetBrainsMono Nerd Font installed"
+else
+    echo "✓ JetBrainsMono Nerd Font already installed"
+fi
 
 # Check if nodejs is already installed
 if ! command -v node &> /dev/null; then
@@ -141,4 +164,5 @@ echo "- Install additional development tools as needed"
 echo "- Configure git with your name and email:"
 echo "  git config --global user.name \"Your Name\""
 echo "  git config --global user.email \"your.email@example.com\""
+echo "- Set your terminal to use JetBrainsMono Nerd Font for proper icon display"
 echo ""
