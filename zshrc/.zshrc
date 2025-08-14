@@ -1,5 +1,10 @@
-# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
+# Set up jenv for Java version management
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+export JAVA_HOME="$HOME/.jenv/versions/$(jenv version-name)"
 
+
+# ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
 PURE_GIT_PULL=0
 
 
@@ -54,3 +59,12 @@ alias ttwo='tree -L 2 -a'
 
 # Created by `pipx` on 2025-05-05 15:00:28
 export PATH="$PATH:/Users/grknight/.local/bin"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/grknight/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/grknight/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/grknight/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/grknight/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export CLAUDE_CODE_USE_VERTEX=1
+export CLOUD_ML_REGION=us-east5
+export ANTHROPIC_VERTEX_PROJECT_ID=itpc-gcp-it-all-claude
