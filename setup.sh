@@ -25,6 +25,6 @@ fi
 
 echo "installing nix packages!!!!!!!!!!"
 # Install Nix packages
-nix-env -iA nixpkgs.myPackages
+# nix-env -iA nixpkgs.myPackages
 
 
