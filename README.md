@@ -6,11 +6,14 @@ Personal macOS dotfiles: **zsh**, **tmux**, **Neovim**, **Ghostty**.
 
 | Path | Linked to | Notes |
 | --- | --- | --- |
-| `zshrc/.zshrc` | `~/.zshrc` | native `vcs_info` prompt (git branch + state), history/completion/nav opts, `cdpath`, opt-in fzf/zoxide/eza |
-| `tmux/` | `~/.config/tmux` | TPM + Catppuccin Mocha, git branch in the status bar via `gitmux` |
+| `zshrc/.zshrc` | `~/.zshrc` | **vi-mode** line editing, native `vcs_info` prompt (git branch + state), history/completion/nav opts, `cdpath`, opt-in fzf/zoxide/eza |
+| `tmux/` | `~/.config/tmux` | TPM + Catppuccin Mocha status bar (rounded pills), git state via `gitmux` |
 | `tmux/gitmux.conf` | `~/.gitmux.conf` | Catppuccin theme for the `gitmux` status module |
 | `nvim/` | `~/.config/nvim` | lazy.nvim; plugins install on first launch |
-| `ghostty/config` | `~/.config/ghostty` | Catppuccin Mocha, FiraCode Nerd Font, quick terminal |
+| `ghostty/config` | `~/.config/ghostty` | Catppuccin Mocha, FiraCode Nerd Font, slight transparency, quick terminal |
+
+Keybindings for all four are catalogued in
+[`keystroke-reminders.md`](keystroke-reminders.md).
 
 ## Packages
 
