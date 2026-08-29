@@ -25,31 +25,9 @@ else
 fi
 echo ""
 
-# Install required packages
-echo "Checking for required packages..."
-PACKAGES=("zsh" "neovim" "tmux" "fzf" "zoxide" "eza" "gitmux" "ripgrep" "tree")
-
-for package in "${PACKAGES[@]}"; do
-    if brew list "$package" &>/dev/null; then
-        echo "✓ $package is already installed"
-    else
-        echo "Installing $package..."
-        brew install "$package"
-    fi
-done
-echo ""
-
-# Fonts (Nerd Font for prompt/tmux/eza glyphs)
-echo "Checking for fonts..."
-FONT_CASKS=("font-fira-code-nerd-font" "font-symbols-only-nerd-font")
-for cask in "${FONT_CASKS[@]}"; do
-    if brew list --cask "$cask" &>/dev/null; then
-        echo "✓ $cask is already installed"
-    else
-        echo "Installing $cask..."
-        brew install --cask "$cask"
-    fi
-done
+# Install every package/app/font from the Brewfile (idempotent)
+echo "Installing packages from Brewfile..."
+brew bundle --file="$DOTFILES_DIR/Brewfile"
 echo ""
 
 # Set up config directories
@@ -134,6 +112,6 @@ echo "=== Installation Complete! ==="
 echo ""
 echo "Next steps:"
 echo "1. Restart your terminal or run: source ~/.zshrc"
-echo "2. Open tmux and press 'prefix + I' (default: Ctrl-b + I) to install tmux plugins"
-echo "3. Open nvim - plugins will be installed automatically via lazy.nvim"
+echo "2. Open tmux and press Ctrl-A then I (capital i) to install tmux plugins"
+echo "3. Open nvim - plugins install automatically via lazy.nvim"
 echo ""

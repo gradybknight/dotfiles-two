@@ -1,46 +1,78 @@
-## Applying Your Dotfiles
+# dotfiles-two
 
-Follow these steps to set up your system and apply your dotfiles.
+Personal macOS dotfiles: **zsh**, **tmux**, **Neovim**, **Ghostty**.
 
-### 1. Clone Dotfiles Repo
+## What's in here
+
+| Path | Linked to | Notes |
+| --- | --- | --- |
+| `zshrc/.zshrc` | `~/.zshrc` | native `vcs_info` prompt (git branch + state), history/completion/nav opts, `cdpath`, opt-in fzf/zoxide/eza |
+| `tmux/` | `~/.config/tmux` | TPM + Catppuccin Mocha, git branch in the status bar via `gitmux` |
+| `tmux/gitmux.conf` | `~/.gitmux.conf` | Catppuccin theme for the `gitmux` status module |
+| `nvim/` | `~/.config/nvim` | lazy.nvim; plugins install on first launch |
+| `ghostty/config` | `~/.config/ghostty` | Catppuccin Mocha, FiraCode Nerd Font, quick terminal |
+
+## Packages
+
+Everything is managed with **Homebrew**. The full list lives in [`Brewfile`](Brewfile):
+
+| Package | Why |
+| --- | --- |
+| `zsh`, `neovim`, `tmux` | shell, editor, multiplexer |
+| `nvm` | Node version manager (loaded in `.zshrc`) |
+| `fzf` | zsh `Ctrl-R`/`Ctrl-T`/`Alt-C`; tmux-fzf, fzf-url, sessionx |
+| `zoxide` | `z` jumping; sessionx zoxide mode |
+| `eza` | `ls` / `la` / `lt` aliases |
+| `gitmux` | git branch + state in the tmux status bar |
+| `ripgrep` | nvim search, `rg` |
+| `tree` | `ttwo` alias |
+| `stow` | legacy `apply-dotfiles.sh` linker |
+| `ghostty` (cask) | terminal |
+| `font-fira-code-nerd-font`, `font-symbols-only-nerd-font` (casks) | prompt / tmux / eza glyphs |
+
+`git` comes from the Xcode Command Line Tools, so it is not in the Brewfile.
+
+Install or re-sync everything at any time:
 
 ```bash
-git clone https://github.com/gradybknight/dotfiles-two.git ~/git/dotfiles
+brew bundle --file ~/git/dotfiles-two/Brewfile
 ```
 
-### 2. Install `nix`
+## Setup
 
-Follow the official instructions for installing Nix on macOS:
-https://nixos.org/download.html
-
-### 3. Run `nix-darwin` to Apply the Flake
-
-- See the `sed` command in the [nix-darwin repo](https://github.com/LnL7/nix-darwin?tab=readme-ov-file#step-1-creating-flakenix). Make sure the computer's name near the bottom of the flake.nix is correct
-
-- Run the build command
+### 1. Clone
 
 ```bash
-nix run nix-darwin -- switch --flake ~/git/dotfiles/nix-darwin
+git clone https://github.com/gradybknight/dotfiles-two.git ~/git/dotfiles-two
 ```
 
-- After applying dotfiles below there is an alias to `rebuild` which will rebuild the flake from the dotfile. **TODO** figure out how to manage multiple computer names
+### 2. Run the installer
 
-### 4. Apply Your Dotfiles
-
-Run the provided script to symlink your dotfiles to `~/.config` using `stow`.
+Installs Homebrew if missing, runs `brew bundle` against the `Brewfile`, symlinks
+every config, and clones TPM. Safe to re-run; it skips what's already done.
 
 ```bash
-chmod +x ~/git/dotfiles/apply-dotfiles.sh
-~/git/dotfiles/apply-dotfiles.sh
+~/git/dotfiles-two/install.sh
 ```
 
-### 5. setup tmux - **This is not automated**
+### 3. Finish tmux plugins — **not automated**
 
-- Clone TPM into your ~/.tmux/plugins directory:
-  `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
-- `tmux`
-- `ctrl-A then I`
+```bash
+tmux              # start a server
+# then press:  Ctrl-A  then  I     (capital i — installs plugins via TPM)
+```
 
-### 6. Add `aerospace` to startup items
+### 4. Reload the shell
 
-- use the Mac OS UI
+```bash
+source ~/.zshrc   # or just open a new terminal
+```
+
+## Ghostty config note
+
+On macOS, Ghostty also loads `~/Library/Application Support/com.mitchellh.ghostty/config`
+*after* the XDG file, which lets it silently override the tracked config. That file
+is kept empty on purpose so `~/.config/ghostty/config` wins. If Ghostty ever ignores
+a setting, check there first.
+
+> `apply-dotfiles.sh` is the older `stow`-based linker and is superseded by `install.sh`.
