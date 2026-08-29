@@ -4,13 +4,14 @@
 
 # ---- Appearance ----
 theme = Catppuccin Mocha
+# "FiraCode Nerd Font" is a superset of "Fira Code" — no separate fallback needed.
 font-family = "FiraCode Nerd Font"
-font-family = "Fira Code"
 font-size = 16
 font-thicken = true
 adjust-cell-height = 12%
 
-background-opacity = 1.0
+# Slight transparency so the blur reads; set to 1.0 to make it fully opaque.
+background-opacity = 0.95
 background-blur = 20
 unfocused-split-opacity = 0.85
 
@@ -18,6 +19,8 @@ unfocused-split-opacity = 0.85
 window-padding-x = 10
 window-padding-y = 10
 window-padding-balance = true
+# Padding takes the terminal bg colour instead of the OS window colour.
+window-padding-color = extend
 macos-titlebar-style = tabs
 window-save-state = always
 window-colorspace = display-p3
@@ -35,6 +38,8 @@ clipboard-read = allow
 clipboard-write = allow
 confirm-close-surface = false
 shell-integration-features = cursor,sudo,title
+# Cmd-click URLs to open them.
+link-url = true
 
 # ---- Keybinds ----
 # Shift+Enter inserts a newline instead of submitting (Claude Code, REPLs, etc.)
