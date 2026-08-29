@@ -36,6 +36,11 @@ setopt INTERACTIVE_COMMENTS      # allow `# comments` at the prompt
 setopt NO_BEEP
 setopt GLOB_DOTS                 # globs match dotfiles too
 
+# Search these parents when a `cd` target isn't found locally, so
+# `cd mole-tech` resolves to ~/git/mole-tech from anywhere (and repo
+# names tab-complete after `cd `). Note: bare AUTO_CD ignores cdpath.
+cdpath=($HOME/git $HOME)
+
 # `d` shows the dir stack, `1`/`2`/... jump to an entry
 alias d='dirs -v'
 for i in {1..9}; do alias "$i"="cd +$i"; done
