@@ -58,13 +58,20 @@ right = git state (gitmux) · directory · date/time.
 The prompt shows: `path  branch <state>` on line 1, `❯` on line 2 (red on error).
 State markers: `+` staged · `!` modified · `?` untracked · `⇡/⇣` ahead/behind.
 
+Line editing is **vi mode**: `Esc` (or `jk`) → normal mode; cursor turns to a
+block and `NORMAL` shows on the right. `hjkl w b e 0 $`, `ci"`, `di(`, `cs"'`,
+`ds(`, `ys<motion>"` all work. `i`/`a`/`c` return to insert (beam cursor).
+
 | -Action-                              | -Keystroke- |
 | ------------------------------------- | ----------- |
+| Enter normal mode                     | Esc / `jk`  |
 | Fuzzy history search (fzf)            | Ctrl-R      |
 | Insert file path (fzf)                | Ctrl-T      |
 | cd into subdirectory (fzf)            | Alt-C       |
-| History search by current prefix      | Up / Down   |
-| Move by word                          | Ctrl-← / Ctrl-→ |
+| History search by current prefix      | Up / Down (or `k`/`j` in normal) |
+| Move by word                          | Ctrl-← / Ctrl-→ (or `w`/`b`) |
+| Start / end of line                   | Ctrl-A / Ctrl-E (or `0`/`$`) |
+| Delete word back / kill line          | Ctrl-W / Ctrl-U |
 
 | -Shortcut-                | -Does- |
 | ------------------------- | ------ |

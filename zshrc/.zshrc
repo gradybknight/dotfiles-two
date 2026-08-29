@@ -55,15 +55,65 @@ zstyle ':completion:*' group-name ''
 zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
 zstyle ':completion:*' special-dirs true
 
-# ~~~~~~~~~~~~~~~ Keybindings ~~~~~~~~~~~~~~~~~~~~
-bindkey -e                                               # emacs-style line editing
+# ~~~~~~~~~~~~~~~ Line editing — vi mode ~~~~~~~~~
+# <Esc> (or `jk`) drops to normal mode to move around the line; i/a/c/… to edit.
+bindkey -v
+KEYTIMEOUT=5                                 # 50ms: snappy <Esc>, still safe for arrow keys
+bindkey -M viins 'jk' vi-cmd-mode            # same escape hatch as nvim
+
+# Keep the everyday emacs keys usable while inserting
+bindkey -M viins '^A' beginning-of-line
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^K' kill-line
+bindkey -M viins '^U' backward-kill-line
+bindkey -M viins '^W' backward-kill-word
+bindkey -M viins '^Y' yank
+bindkey -M viins '^?' backward-delete-char   # Backspace still works after leaving normal mode
+bindkey -M viins '^H' backward-delete-char
+
+# History prefix search: Up/Down in both modes, plus j/k in normal mode
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-bindkey '^[[A' up-line-or-beginning-search               # Up   -> prefix history search
-bindkey '^[[B' down-line-or-beginning-search             # Down -> prefix history search
-bindkey '^[[1;5C' forward-word                           # Ctrl-Right
-bindkey '^[[1;5D' backward-word                          # Ctrl-Left
+bindkey -M viins '^[[A' up-line-or-beginning-search      # Up
+bindkey -M viins '^[[B' down-line-or-beginning-search    # Down
+bindkey -M vicmd '^[[A' up-line-or-beginning-search
+bindkey -M vicmd '^[[B' down-line-or-beginning-search
+bindkey -M vicmd 'k'    up-line-or-beginning-search
+bindkey -M vicmd 'j'    down-line-or-beginning-search
+bindkey -M viins '^[[1;5C' forward-word                  # Ctrl-Right
+bindkey -M viins '^[[1;5D' backward-word                 # Ctrl-Left
+
+# Text objects (ci"  di(  ya{ …) and vim-surround (cs"'  ds(  ys<motion>")
+autoload -Uz select-bracketed select-quoted surround
+zle -N select-bracketed
+zle -N select-quoted
+zle -N change-surround surround
+zle -N delete-surround surround
+zle -N add-surround surround
+for km in viopp visual; do
+  for c in {a,i}${(s..)^:-'()[]{}<>bB'}; do bindkey -M $km $c select-bracketed; done
+  for c in {a,i}{\',\",\`};              do bindkey -M $km $c select-quoted;    done
+done
+bindkey -M vicmd 'cs' change-surround
+bindkey -M vicmd 'ds' delete-surround
+bindkey -M vicmd 'ys' add-surround
+bindkey -M visual 'S'  add-surround
+
+# Cursor shape + a right-prompt tag show the mode: block/NORMAL vs beam/insert
+VI_RPROMPT=''
+_zle_vi_keymap() {
+  case $KEYMAP in
+    vicmd) VI_RPROMPT='%F{#f9e2af}NORMAL%f '; printf '\e[2 q' ;;   # steady block
+    *)     VI_RPROMPT='';                     printf '\e[6 q' ;;   # steady beam
+  esac
+  zle reset-prompt
+}
+zle -N zle-keymap-select _zle_vi_keymap
+_zle_vi_init()   { VI_RPROMPT=''; printf '\e[6 q' }   # every new line starts in insert
+_zle_vi_finish() { printf '\e[2 q' }                  # hand a block cursor back to TUIs
+zle -N zle-line-init   _zle_vi_init
+zle -N zle-line-finish _zle_vi_finish
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~~
 # Two-line prompt:
@@ -121,7 +171,7 @@ _prompt_host=''
 
 PROMPT='${_prompt_host}%F{#89b4fa}%(4~|…/%3~|%~)%f${vcs_info_msg_0_}
 %(?.%F{#a6e3a1}.%F{#f38ba8})❯%f '
-RPROMPT='%F{#6c7086}${_prompt_elapsed}%f'
+RPROMPT='${VI_RPROMPT}%F{#6c7086}${_prompt_elapsed}%f'
 
 # ~~~~~~~~~~~~~~~ Aliases ~~~~~~~~~~~~~~~~~~~~~~~~
 
