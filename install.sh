@@ -27,7 +27,7 @@ echo ""
 
 # Install required packages
 echo "Checking for required packages..."
-PACKAGES=("zsh" "neovim" "tmux")
+PACKAGES=("zsh" "neovim" "tmux" "fzf" "zoxide" "eza" "gitmux" "ripgrep" "tree")
 
 for package in "${PACKAGES[@]}"; do
     if brew list "$package" &>/dev/null; then
@@ -35,6 +35,19 @@ for package in "${PACKAGES[@]}"; do
     else
         echo "Installing $package..."
         brew install "$package"
+    fi
+done
+echo ""
+
+# Fonts (Nerd Font for prompt/tmux/eza glyphs)
+echo "Checking for fonts..."
+FONT_CASKS=("font-fira-code-nerd-font" "font-symbols-only-nerd-font")
+for cask in "${FONT_CASKS[@]}"; do
+    if brew list --cask "$cask" &>/dev/null; then
+        echo "✓ $cask is already installed"
+    else
+        echo "Installing $cask..."
+        brew install --cask "$cask"
     fi
 done
 echo ""
@@ -70,6 +83,21 @@ elif [ -e "$XDG_CONFIG_HOME/tmux" ] && [ ! -L "$XDG_CONFIG_HOME/tmux" ]; then
 else
     ln -sf "$DOTFILES_DIR/tmux" "$XDG_CONFIG_HOME/tmux"
     echo "✓ Linked tmux config"
+fi
+
+# gitmux (git status in the tmux bar) - lives next to the tmux config
+ln -sf "$XDG_CONFIG_HOME/tmux/gitmux.conf" "$HOME/.gitmux.conf"
+echo "✓ Linked .gitmux.conf"
+
+# Ghostty
+if [ -L "$XDG_CONFIG_HOME/ghostty" ] && [ "$(readlink "$XDG_CONFIG_HOME/ghostty")" = "$DOTFILES_DIR/ghostty" ]; then
+    echo "✓ ghostty config already linked correctly"
+elif [ -e "$XDG_CONFIG_HOME/ghostty" ] && [ ! -L "$XDG_CONFIG_HOME/ghostty" ]; then
+    echo "Warning: $XDG_CONFIG_HOME/ghostty exists and is not a symlink"
+    echo "Please backup and remove it manually, then re-run this script"
+else
+    ln -sf "$DOTFILES_DIR/ghostty" "$XDG_CONFIG_HOME/ghostty"
+    echo "✓ Linked ghostty config"
 fi
 
 # Zsh
