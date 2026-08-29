@@ -97,7 +97,7 @@ _prompt_timer_precmd() {
   _prompt_elapsed=''
   if (( _prompt_timer_start )); then
     local -F d=$(( EPOCHREALTIME - _prompt_timer_start ))
-    local -i s=$(( int(d) ))
+    local -i s=$(( d ))   # assigning to an int-typed var truncates
     if (( s >= 60 )); then
       _prompt_elapsed="$(( s / 60 ))m$(( s % 60 ))s"
     elif (( d >= 3 )); then
