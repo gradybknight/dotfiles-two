@@ -58,6 +58,11 @@ return {
 
       opts.desc = "Restart LSP"
       keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+      opts.desc = "Toggle inlay hints"
+      keymap.set("n", "<leader>ih", function()
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+      end, opts)
     end
 
     -- used to enable autocompletion (assign to every lsp server config)
@@ -140,6 +145,29 @@ return {
 
     -- configure ocaml
     lspconfig["ocamllsp"].setup({})
+
+    -- configure rust server
+    lspconfig["rust_analyzer"].setup({
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        on_attach(client, bufnr)
+        -- Enable inlay hints by default for Rust
+        vim.lsp.inlay_hint.enable(true)
+      end,
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
+          checkOnSave = {
+            command = "clippy",
+          },
+          inlayHints = {
+            enable = true,
+          },
+        },
+      },
+    })
 
     -- configure lua server (with special settings)
     lspconfig["lua_ls"].setup({
