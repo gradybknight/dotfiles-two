@@ -26,7 +26,6 @@ Everything is managed with **Homebrew**. The full list lives in [`Brewfile`](Bre
 | `gitmux` | git branch + state in the tmux status bar |
 | `ripgrep` | nvim search, `rg` |
 | `tree` | `ttwo` alias |
-| `stow` | legacy `apply-dotfiles.sh` linker |
 | `ghostty` (cask) | terminal |
 | `font-fira-code-nerd-font`, `font-symbols-only-nerd-font` (casks) | prompt / tmux / eza glyphs |
 
@@ -49,30 +48,34 @@ git clone https://github.com/gradybknight/dotfiles-two.git ~/git/dotfiles-two
 ### 2. Run the installer
 
 Installs Homebrew if missing, runs `brew bundle` against the `Brewfile`, symlinks
-every config, and clones TPM. Safe to re-run; it skips what's already done.
+every config, and clones the tmux plugins. Safe to re-run; it skips what's
+already done.
 
 ```bash
 ~/git/dotfiles-two/install.sh
 ```
 
-### 3. Finish tmux plugins — **not automated**
-
-```bash
-tmux              # start a server
-# then press:  Ctrl-A  then  I     (capital i — installs plugins via TPM)
-```
-
-### 4. Reload the shell
+### 3. Reload the shell
 
 ```bash
 source ~/.zshrc   # or just open a new terminal
 ```
 
+Open nvim once — lazy.nvim installs its plugins on first launch. If the tmux
+status bar ever looks bare, run `Ctrl-A` then `I` (capital i) to reinstall
+plugins via TPM.
+
 ## Ghostty config note
 
 On macOS, Ghostty also loads `~/Library/Application Support/com.mitchellh.ghostty/config`
-*after* the XDG file, which lets it silently override the tracked config. That file
-is kept empty on purpose so `~/.config/ghostty/config` wins. If Ghostty ever ignores
-a setting, check there first.
+*after* the XDG file, which lets it silently override the tracked config. If Ghostty
+ever ignores a setting from `~/.config/ghostty/config`, check whether that file
+exists and is shadowing it.
 
-> `apply-dotfiles.sh` is the older `stow`-based linker and is superseded by `install.sh`.
+## tmux plugins
+
+`tmux/plugins/` is gitignored — plugins are managed by [TPM](https://github.com/tmux-plugins/tpm),
+not vendored. The list lives in the `@plugin` lines of `tmux/tmux.conf`.
+`install.sh` clones each one straight into `~/.config/tmux/plugins/` (no tmux
+server needed). Inside tmux, `Ctrl-A` + `I` installs any new ones and
+`Ctrl-A` + `U` updates them.

@@ -2,5 +2,9 @@
 .zcompdump
 .zcompdump.zwc
 
+# tmux plugins — managed by TPM, not vendored. install.sh clones tpm here;
+# `Ctrl-A I` (or install.sh's headless step) pulls the rest.
+tmux/plugins/
+
 # macOS
 .DS_Store

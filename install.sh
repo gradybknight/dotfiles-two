@@ -34,7 +34,6 @@ echo ""
 export XDG_CONFIG_HOME="$HOME/.config"
 echo "Creating config directories..."
 mkdir -p "$XDG_CONFIG_HOME"
-mkdir -p "$HOME/.tmux/plugins"
 echo "✓ Config directories created"
 echo ""
 
@@ -98,20 +97,43 @@ else
 fi
 echo ""
 
-# Install tmux plugin manager (TPM)
-if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
-    echo "Installing tmux plugin manager (TPM)..."
-    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-    echo "✓ TPM installed"
-else
-    echo "✓ TPM already installed"
-fi
+# Install tmux plugins.
+# tmux.conf loads TPM from ~/.config/tmux/plugins/tpm (this repo's
+# tmux/plugins/tpm via the symlink); tmux/plugins/ is gitignored.
+# We clone each `@plugin` from tmux.conf directly — no tmux server needed,
+# so this can't collide with a running session. TPM still handles runtime
+# loading and `Ctrl-A U` updates.
+TMUX_CONF="$XDG_CONFIG_HOME/tmux/tmux.conf"
+PLUGIN_DIR="$XDG_CONFIG_HOME/tmux/plugins"
+mkdir -p "$PLUGIN_DIR"
+
+echo "Installing tmux plugins..."
+# Only real `set -g @plugin '…'` lines — not commented-out ones.
+grep -E "^[[:space:]]*set(-option)?[[:space:]]+-g[[:space:]]+@plugin[[:space:]]+'" "$TMUX_CONF" \
+  | sed -E "s/.*@plugin[[:space:]]+'([^']+)'.*/\1/" | while read -r spec; do
+    repo="${spec%%#*}"                       # owner/name
+    ref=""; [ "$spec" != "$repo" ] && ref="${spec#*#}"   # optional #branch-or-tag
+    name="${repo##*/}"
+    dest="$PLUGIN_DIR/$name"
+    if [ -d "$dest/.git" ]; then
+        echo "  ✓ $name"
+        continue
+    fi
+    rm -rf "$dest"
+    if [ -n "$ref" ]; then
+        git clone -q -c advice.detachedHead=false --single-branch --branch "$ref" \
+            "https://github.com/$repo" "$dest"
+    else
+        git clone -q --single-branch "https://github.com/$repo" "$dest"
+    fi && echo "  + $name${ref:+ ($ref)}" \
+       || echo "  ! $name failed — run Ctrl-A then I inside tmux to retry"
+done
 echo ""
 
 echo "=== Installation Complete! ==="
 echo ""
 echo "Next steps:"
 echo "1. Restart your terminal or run: source ~/.zshrc"
-echo "2. Open tmux and press Ctrl-A then I (capital i) to install tmux plugins"
-echo "3. Open nvim - plugins install automatically via lazy.nvim"
+echo "2. Open nvim - plugins install automatically via lazy.nvim"
+echo "   (if the tmux status bar looks bare, run Ctrl-A then I to (re)install plugins)"
 echo ""

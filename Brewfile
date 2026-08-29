@@ -16,7 +16,6 @@ brew "eza"                # ls / la / lt aliases
 brew "gitmux"             # git branch + state in the tmux status bar
 brew "ripgrep"            # nvim search; `rg`
 brew "tree"               # `ttwo` alias
-brew "stow"               # apply-dotfiles.sh (legacy linker)
 
 # ---- Apps ----
 cask "ghostty"            # terminal
